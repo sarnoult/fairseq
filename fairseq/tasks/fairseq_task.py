@@ -10,7 +10,8 @@ from argparse import Namespace
 from typing import Any, Callable, Dict, List
 
 import torch
-from fairseq import metrics, search, tokenizer, utils
+from fairseq.logging import metrics
+from fairseq import search, tokenizer, utils
 from fairseq.data import Dictionary, FairseqDataset, data_utils, encoders, iterators
 from fairseq.dataclass import FairseqDataclass
 from fairseq.dataclass.utils import gen_parser_from_dataclass
@@ -368,6 +369,8 @@ class FairseqTask(object):
         match_source_len = getattr(args, "match_source_len", False)
         diversity_rate = getattr(args, "diversity_rate", -1)
         constrained = getattr(args, "constraints", False)
+        if prefix_allowed_tokens_fn is None:
+            prefix_allowed_tokens_fn = getattr(args, "prefix_allowed_tokens_fn", None)
         if (
             sum(
                 int(cond)
