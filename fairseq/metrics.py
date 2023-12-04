@@ -17,7 +17,7 @@ import uuid
 from collections import OrderedDict, defaultdict
 from typing import Callable, Dict, List, Optional
 
-from .meters import *
+from fairseq.logging.meters import *
 
 
 # Aggregation contexts are considered "active" when inside the scope

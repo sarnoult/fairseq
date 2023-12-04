@@ -20,7 +20,7 @@ from fairseq.dataclass.configs import GenerationConfig
 
 from . import FairseqTask, register_task
 from .. import utils
-from ..logging import metrics
+from .. import metrics
 
 
 class LabelEncoder(object):
